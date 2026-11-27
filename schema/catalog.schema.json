@@ -42,7 +42,7 @@
                 "range": {"type": ["object", "null"]},
                 "features": {"type": "array", "items": {"type": "string"}},
                 "colours": {"type": "array", "items": {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "code": {"type": ["string", "null"]}, "hex": {"type": ["string", "null"]}}}},
-                "tyres": {"type": ["object", "null"], "properties": {"front": {"type": ["string", "null"]}, "rear": {"type": ["string", "null"]}, "spare": {"type": ["string", "null"]}, "front_pressure_psi": {"type": ["number", "null"]}, "rear_pressure_psi": {"type": ["number", "null"]}, "spare_pressure_psi": {"type": ["number", "null"]}, "pressure_load_note": {"type": ["string", "null"]}},
+                "tyres": {"type": ["object", "null"], "properties": {"front_left": {"type": ["string", "null"]}, "front_right": {"type": ["string", "null"]}, "rear_left": {"type": ["string", "null"]}, "rear_right": {"type": ["string", "null"]}, "front": {"type": ["string", "null"], "description": "Shared front axle size; used when individual front wheel sizes are not supplied."}, "rear": {"type": ["string", "null"], "description": "Shared rear axle size; used when individual rear wheel sizes are not supplied."}, "spare": {"type": ["string", "null"]}, "front_pressure_psi": {"type": ["number", "null"]}, "rear_pressure_psi": {"type": ["number", "null"]}, "spare_pressure_psi": {"type": ["number", "null"]}, "pressure_load_note": {"type": ["string", "null"]}},
                 "provenance": {"$ref": "#/$defs/provenance"}
               }
             }
