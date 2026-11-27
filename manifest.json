@@ -1,0 +1,11 @@
+{
+  "catalogue_id": "mygarage-india",
+  "market": "IN",
+  "schema_version": 1,
+  "catalogue_version": "0.1.0",
+  "generated_at": "2026-11-28T00:00:00Z",
+  "catalogue_url": "https://raw.githubusercontent.com/ashwinkenne01101992/MyGarage-India-Vehicle-Catalog/main/data/catalog.json",
+  "sha256": "ca7f40bd0c62612e8f56a798bcc90ea43f00f177ae969651f1f03f9e661aabc0",
+  "vehicle_count": 0,
+  "variant_count": 0
+}
