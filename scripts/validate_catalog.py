@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "data" / "catalog.json"
 MANIFEST = ROOT / "manifest.json"
-VERSION_RE = re.compile(r"^\\d+\\.\\d+\\.\\d+$")
+VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
 CATEGORIES = {"CAR", "SUV", "MPV", "MOTORCYCLE", "SCOOTER", "ELECTRIC_CAR", "ELECTRIC_TWO_WHEELER"}
 POWERTRAINS = {"PETROL", "DIESEL", "CNG", "LPG", "HYBRID", "STRONG_HYBRID", "ELECTRIC", "FLEX_FUEL", "OTHER"}
 STATUSES = {"OEM_VERIFIED", "GOVERNMENT_VERIFIED", "LICENSED_DATA", "SECONDARY_UNVERIFIED"}
@@ -94,7 +94,7 @@ def main():
         "vehicle_count": len(vehicles),
         "variant_count": sum(len(v["variants"]) for v in vehicles)
     }
-    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\\n", encoding="utf-8")
+    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"Validated {len(vehicles)} vehicles / {manifest['variant_count']} variants")
     print(f"SHA-256: {digest}")
 
