@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MyGarage India Vehicle Catalogue",
+  "type": "object",
+  "required": ["catalogue_id", "market", "schema_version", "catalogue_version", "vehicles"],
+  "properties": {
+    "catalogue_id": {"const": "mygarage-india"},
+    "market": {"const": "IN"},
+    "schema_version": {"const": 1},
+    "catalogue_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "generated_at": {"type": ["string", "null"]},
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "make", "model", "variants", "provenance"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "category": {"enum": ["CAR", "SUV", "MPV", "MOTORCYCLE", "SCOOTER", "ELECTRIC_CAR", "ELECTRIC_TWO_WHEELER"]},
+          "make": {"type": "string", "minLength": 1},
+          "model": {"type": "string", "minLength": 1},
+          "generation": {"type": ["string", "null"]},
+          "production_start": {"type": ["string", "null"]},
+          "production_end": {"type": ["string", "null"]},
+          "body_type": {"type": ["string", "null"]},
+          "variants": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name", "powertrain", "provenance"],
+              "properties": {
+                "id": {"type": "string", "minLength": 1},
+                "name": {"type": "string", "minLength": 1},
+                "model_year_from": {"type": ["integer", "null"]},
+                "model_year_to": {"type": ["integer", "null"]},
+                "powertrain": {"enum": ["PETROL", "DIESEL", "CNG", "LPG", "HYBRID", "STRONG_HYBRID", "ELECTRIC", "FLEX_FUEL", "OTHER"]},
+                "engine": {"type": ["object", "null"]},
+                "transmission": {"type": ["object", "null"]},
+                "dimensions_mm": {"type": ["object", "null"]},
+                "performance": {"type": ["object", "null"]},
+                "battery": {"type": ["object", "null"]},
+                "range": {"type": ["object", "null"]},
+                "features": {"type": "array", "items": {"type": "string"}},
+                "colours": {"type": "array", "items": {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "code": {"type": ["string", "null"]}, "hex": {"type": ["string", "null"]}}}},
+                "tyres": {"type": ["object", "null"], "properties": {"front": {"type": ["string", "null"]}, "rear": {"type": ["string", "null"]}, "spare": {"type": ["string", "null"]}, "front_pressure_psi": {"type": ["number", "null"]}, "rear_pressure_psi": {"type": ["number", "null"]}, "spare_pressure_psi": {"type": ["number", "null"]}, "pressure_load_note": {"type": ["string", "null"]}},
+                "provenance": {"$ref": "#/$defs/provenance"}
+              }
+            }
+          },
+          "provenance": {"$ref": "#/$defs/provenance"}
+        }
+      }
+    }
+  },
+  "$defs": {"provenance": {"type": "object", "required": ["source_name", "source_url", "verified_on", "status"], "properties": {"source_name": {"type": "string"}, "source_url": {"type": "string", "format": "uri"}, "license_or_permission": {"type": ["string", "null"]}, "verified_on": {"type": "string", "format": "date"}, "status": {"enum": ["OEM_VERIFIED", "GOVERNMENT_VERIFIED", "LICENSED_DATA", "SECONDARY_UNVERIFIED"]}, "notes": {"type": ["string", "null"]}}}}
+}
